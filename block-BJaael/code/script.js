@@ -13,7 +13,7 @@ function Color (){
    let box = document.querySelectorAll('.box');
      box.forEach((item) => {
     var random = Math.floor(Math.random()*500);
-    let color = 'hsla('+ random +',100%, 50%, 1 )';
+    let color = 'hsla('+ random +',100%, 50%, 1)';
 
      item.innerText = random
      item.style.backgroundColor  = color;
