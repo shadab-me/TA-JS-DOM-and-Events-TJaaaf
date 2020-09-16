@@ -6,6 +6,7 @@ margin: 0 auto;
 box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.3);
 margin-top: 120px;
 }
+
 header{
     background-color: rgb(71, 71, 230);
     padding: 5px;
@@ -13,6 +14,10 @@ header{
     font-weight: bold;
 }
 
+i{
+    background-color: rgb(132, 132, 218);
+    border-radius: 50%;
+}
 .person i{
     padding: 20px;
     font-size: 55px;
@@ -31,11 +36,6 @@ header{
     font-size: 30px;
     font-weight: bolder;
 }
-.win{
-    color: blue;
+ 
 
-}
-
-.loss{
-    color: red;
-}
+ 
