@@ -13,9 +13,6 @@ function game(u, c) {
     }
 
 }
-
-
-
 function computer() {
     let ar = ['rock', 'paper', 'scissors', 'lizard', 'spock'];
     return ar[Math.floor(Math.random() * ar.length)];
@@ -31,7 +28,7 @@ function won() {
     div.innerText = 'You Win';
     PlayerCount++;
     playerScore.innerText = PlayerCount;
-    div.classList.add("win")
+    div.style.color = 'blue';
 
 }
 
@@ -40,9 +37,12 @@ function loss() {
     div.innerText = 'You Loss';
     ComputerCount++;
     computerScore.innerText = ComputerCount;
+    div.style.color = 'red';
+
 }
 
 function tie() {
     let div = document.querySelector('.result');
-    div.innerText = 'It is a tie'
+    div.innerText = 'It is a Tie';
+    div.style.color = 'black'
 }
