@@ -26,7 +26,16 @@ header{
     padding: 20px;
 }
 
+.result{
+    padding: 10px;
+    font-size: 30px;
+    font-weight: bolder;
+}
 .win{
     color: blue;
-    padding: 10px;
+
+}
+
+.loss{
+    color: red;
 }
