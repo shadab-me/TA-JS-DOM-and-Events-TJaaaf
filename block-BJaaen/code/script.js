@@ -3,41 +3,31 @@ let PlayerCount = 0;
 let computerScore = document.querySelector('#computerScore')
 let ComputerCount = 0;
 
-
-function reset(){
-   let div = document.querySelector('.result');
-   div.innerText = '';
-   PlayerCount = 0;
-   ComputerCount = 0;
-  }
-
-function game(Player, computer){
-     console.log(e, computer)
-     won();
-switch(player,computer){
-    case player == 'scissors' && computer == 'paper':
-    case player == 'paper' && computer == 'rock':
-    case player == 'rock' && computer == 'lizard':
-    case player == 'lizard' && computer == 'spock':
-    case player == 'spock' && computer == 'scissors':
-    case player == 'scissors' && computer == 'lizard':
-    case player == 'lizard' && computer == 'paper':
-    case player == 'paper' && computer == 'spock':
-    
-}
-
+function game(u, c) {
+    if (u === c) {
+        tie();
+    } else if ((u === "scissors" && c === "paper") || (u === "paper" && c === "rock") || (u === "rock" && c === "lizard") || (u === "lizard" && c === "spock") || (u === "spock" && c === "scirrors") || (u === "scissors" && c === "lizard") || (u === "lizard" && c === "paper") || (u === "paper" && c === "spock") || (u === "spock" && c === "rock") || (u === "rock" && c === "scissors")) {
+        won();
+    } else {
+        loss();
+    }
 
 }
-function computer(){
+
+
+
+function computer() {
     let ar = ['rock', 'paper', 'scissors', 'lizard', 'spock'];
-    return ar[Math.floor(Math.random()*ar.length)];
+    return ar[Math.floor(Math.random() * ar.length)];
 }
-function select(e){
-      game(e, computer());
- }
-function won(){
-     
-   let div = document.querySelector('.result');
+
+function select(e) {
+    game(e, computer());
+}
+
+function won() {
+
+    let div = document.querySelector('.result');
     div.innerText = 'You Win';
     PlayerCount++;
     playerScore.innerText = PlayerCount;
@@ -45,19 +35,14 @@ function won(){
 
 }
 
-function loss(){
+function loss() {
     let div = document.querySelector('.result');
     div.innerText = 'You Loss';
     ComputerCount++;
     computerScore.innerText = ComputerCount;
-    div.classList.add("loss")
 }
 
-let player = document.querySelector('#player');
- 
-console.log(computer());
-
-
-
- 
- 
+function tie() {
+    let div = document.querySelector('.result');
+    div.innerText = 'It is a tie'
+}
