@@ -92,10 +92,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 4rem;
+  font-s`ize: 4rem;
   font-weight: bold;
   color: white;
   cursor: pointer;
+   content: none;
 }
 .text {
   height: 100%;
