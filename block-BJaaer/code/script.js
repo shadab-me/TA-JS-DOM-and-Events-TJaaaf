@@ -26,7 +26,7 @@ function submitHandler(event){
 function ui(){
    uiName.innerText = `Hello ${userInfo.name}`
    uiEmail.innerText = `Email: ${userInfo.email}`
-   uiColor.innerText = `COlor: ${userInfo.color}`
+   uiColor.innerText = `Color: ${userInfo.color}`
    uiRatting.innerText = `Ratting: ${userInfo.rating}`
    uiGenre.innerText = `Book Genre: ${userInfo.drone}`
    modal.style.display = 'block'
@@ -35,6 +35,7 @@ function ui(){
 function closeHandler(){
     modal.style.display = 'none'
 }
+
 let form = document.querySelector('form');
 form.addEventListener('submit', submitHandler);
 form.addEventListener('submit', ui);

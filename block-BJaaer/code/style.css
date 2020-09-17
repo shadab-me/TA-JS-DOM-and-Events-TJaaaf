@@ -92,7 +92,12 @@ input[type='text'] {
 .terms {
   display: inline-block;
 }
-
+h1{
+  padding: 15px 0;
+}
+h3{
+  padding: 10px 0;
+}
 .modal{
   position: absolute;
   top: 0;
