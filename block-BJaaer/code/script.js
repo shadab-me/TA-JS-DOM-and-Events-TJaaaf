@@ -4,6 +4,7 @@ let uiMovies = document.querySelector('#Display-movie');
 let uiColor = document.querySelector('#Display-color');
 let uiRatting = document.querySelector('#Display-rating');
 let uiGenre = document.querySelector('#Display-genre');
+let uiTerms = document.querySelector('#Display-terms')
 let modal = document.querySelector('.modal');
 let close = document.querySelector('#close');
 
@@ -29,6 +30,7 @@ function ui(){
    uiColor.innerText = `Color: ${userInfo.color}`
    uiRatting.innerText = `Ratting: ${userInfo.rating}`
    uiGenre.innerText = `Book Genre: ${userInfo.drone}`
+   uiTerms.innerText = `${userInfo.terms}`
    modal.style.display = 'block'
 }
 
