@@ -26,9 +26,13 @@ userInfo.email = form.elements.email.value;
  if(userInfo.phone.split('').length < 7){
    ui('phone-message', `Phone number less then 7 numbers is not allowed`)
  }
-  // send data to server
-  userInfo.password = form.elements.password.value;
-  console.log(userInfo);
+userInfo.password = form.elements.password.value;
+userInfo.passwordCheck = form.elements.passwordCheck.value;   
+if(userInfo.password != userInfo.passwordCheck){
+  ui('password-message', `Password is not same`)
+}
+// send data to server
+console.log(userInfo);
 }
 
 form.addEventListener("submit", handleSubmit);
