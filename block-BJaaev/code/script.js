@@ -29,9 +29,23 @@ function handlerDone(event){
     ui();
 
  }
- function ui(){
-      ul.innerHTML = '';
-       allTodo.forEach((item, index) => {
+function FilterHandler(event){
+ if(event.target.id == 'All'){
+    ui(allTodo)
+}
+if(event.target.id == 'Active'){
+    ui(allTodo.filter(task => task.isDone == false));
+}
+if(event.target.id == 'Completed'){
+    ui(allTodo.filter(task => task.isDone == true));
+}
+ }
+
+
+
+ function ui(el = allTodo){
+        ul.innerHTML = '';
+       el.forEach((item, index) => {
         let li = document.createElement('li');
         li.setAttribute('class', 'list-group-item d-flex justify-content-between align-items-center')
         var input = document.createElement("INPUT");
@@ -49,6 +63,13 @@ function handlerDone(event){
         li.append(input, p, span);
         ul.appendChild(li);
     });
- }
+    let footer = document.createElement('li');
+        footer.setAttribute('class', 'list-group-item d-flex justify-content-between align-items-center')
+        footer.innerHTML = `<span id ='All'>All</span> 
+        <span id = 'Active'>Active</span> 
+        <span id = 'Completed'>Completed</span>`
+         ul.appendChild(footer);
+        footer.addEventListener('click', FilterHandler);
+  }
  userInput.addEventListener("keyup", handler);
  
