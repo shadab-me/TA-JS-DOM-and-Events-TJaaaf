@@ -27,8 +27,9 @@ function handler(event){
  }
 
 function removeitm(event){
-     console.log(event.target)
-     let e = event.target.parentElement.remove()
+    if(event.target.id == 'remove'){
+        let e = event.target.parentElement.remove()
+    } 
   }
 movieList.addEventListener('click', removeitm);
 form.addEventListener('submit', handler)
