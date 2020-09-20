@@ -18,12 +18,18 @@ function ui(text){
 function handler(event){
     event.preventDefault();
    let movie = form.elements.movie.value;
+   if(movie == ''){
+       alert('You Can Not Leave Movie Name Blank');
+   }else{
     ui(movie);
-    console.log(movie)
-}
 
-function remove(event){
-     console.log(event.target)
+   }
  }
-movieList.addEventListener('click', remove);
+
+function removeitm(event){
+    if(event.target.id == 'remove'){
+        let e = event.target.parentElement.remove()
+    } 
+  }
+movieList.addEventListener('click', removeitm);
 form.addEventListener('submit', handler)
