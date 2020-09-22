@@ -82,6 +82,8 @@ body {
 }
 
 .box {
+  transform: rotateY(180deg);
+  transition: all 0.3s ease-out;
   margin: 5px;
   background-color: #444;
   background-size: contain;
@@ -92,7 +94,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-s`ize: 4rem;
+  font-size: 4rem;
   font-weight: bold;
   color: white;
   cursor: pointer;
@@ -117,4 +119,9 @@ h2 {
 .heading {
   text-align: center;
   margin-top: 2rem;
+}
+
+.flip{
+  transform: rotateY(360deg);
+  
 }
