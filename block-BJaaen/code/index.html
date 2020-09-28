@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock Paper and Scissor game</title>
+    <link href="./style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
+  </head>
+  <body>
+   
+<div class="container">
+  <header>
+<h1>Rock Paper Scissor Lizard Spock</h1>
+
+      
+  </header>
+  <div class="person">
+    <div class="player-container" id="player">
+      <h2>You - <span id="playerScore">0</span><span class="choice" id="playerChoice"></span></h2>
+      <i class="far fa-hand-rock" title="Rock" id="playerRock" onclick="select('rock')"></i>
+      <i class="far fa-hand-paper" title="Paper" id="playerPaper" onclick="select('paper')"></i>
+      <i class="far fa-hand-scissors" title="Scissors" id="playerScissors" onclick="select('scissors')"></i>
+      <i class="far fa-hand-lizard" title="Lizard" id="playerLizard" onclick="select('lizard')"></i>
+      <i class="far fa-hand-spock" title="Spock" id="playerSpock" onclick="select('spock')"></i>
+  </div>
+  </div>
+<div class="computer">
+  <div class="computer-container" id="computer">
+    <h2>Computer - <span id="computerScore">0</span><span class="choice" id="playerChoice"></span></h2>
+    <i class="far fa-hand-rock" title="Rock" id="playerRock"></i>
+    <i class="far fa-hand-paper" title="Paper" id="playerPaper"></i>
+    <i class="far fa-hand-scissors" title="Scissors" id="playerScissors"></i>
+    <i class="far fa-hand-lizard" title="Lizard" id="playerLizard"></i>
+    <i class="far fa-hand-spock" title="Spock" id="playerSpock"></i>
+</div>
+</div>
+<button id = 'reset'>Reset</button>
+<div class="result">
+
+</div>
+</div>
+
+
+    <script src="./script.js"></script>
+  </body>
+</html>
