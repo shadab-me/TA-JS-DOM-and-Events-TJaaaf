@@ -14,36 +14,35 @@
       <form>
         <div class="form-control">
           <label for="text">Username</label>
-          <input type="text" name="username" placeholder="arya"/>
-          <small id = 'username-message'></small>
-
+          <input type="text" name="username" placeholder="arya" />
+          <small id="username-message"></small>
         </div>
         <div class="form-control">
           <label for="text">Name</label>
           <input type="text" name="name" placeholder="Arya Stark" />
-          <small id = 'name-message'></small>
+          <small id="name-message"></small>
         </div>
         <div class="form-control">
           <label for="text">Email</label>
           <input
             id="text"
-            type=""
+            type="email"
             name="email"
             placeholder="arya@stark.com"
           />
-          <small id = 'email-message'></small>
+          <small id="email-message"></small>
         </div>
-        <div class="form-control error">
-          <label for="text">Phone Number</label>
+        <div class="form-control">
+          <label for="phone">Phone Number</label>
           <input
-            id="Phone"
+            id="phone"
             type="tel"
             name="phone"
-            placeholder = 'Enter your phone number'
+            placeholder="Enter your password"
           />
           <small id="phone-message"></small>
         </div>
-        <div class="form-control error">
+        <div class="form-control">
           <label for="text">Password</label>
           <input
             id="password"
@@ -51,18 +50,18 @@
             name="password"
             placeholder="Enter your password"
           />
-          <small></small>
+          <small id="password-message"></small>
         </div>
-        <div class="form-control success">
+        <div class="form-control">
           <label for="text">Confirm Password</label>
           <input
-            id="password-check"
-            type="password-check"
-            name="passwordCheck"
+            id="password1"
+            type="password"
+            name="password-check"
             placeholder="Confirm Password"
           />
+          <small id="password1-message"></small>
         </div>
-        <small id = 'password-message'></small>
 
         <button type="submit">Submit</button>
       </form>
