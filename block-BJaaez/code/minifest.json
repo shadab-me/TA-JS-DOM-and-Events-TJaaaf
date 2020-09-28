@@ -1,6 +1,0 @@
-{
-  "name": "ToDo List",
-   "description": "This Chrome Extension for todo list",
-    "version": "1.0",
-     "newtab": "index.html"
-}
