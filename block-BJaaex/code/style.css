@@ -15,10 +15,32 @@
 i{
     color: white;
     font-size: 125px;
+    width: 100%;
 }
 .hidden{
  color:  #323232;
 }
-.selected{
+header{
+    background-color: rgb(60, 60, 136);
+    text-align: center;
+    font-size: 35px;
     color: white;
 }
+.selected{
+    color: white;
+    background-color: blue;
+    transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+}
+.match{
+    background-color: green;
+}
+.notMatch{
+    background-color: red;
+}
+.evenRemover{
+    pointer-events: none;
+    cursor: progress;
+}
+ 
+
