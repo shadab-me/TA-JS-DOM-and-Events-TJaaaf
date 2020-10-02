@@ -1,0 +1,46 @@
+.container{
+    display: flex;
+     flex-wrap: wrap;
+     justify-content: center;
+}
+.box{
+    width: 20%;
+    background-color: #323232;
+    margin: 5px;
+    height: 150px;
+    cursor: pointer;
+    border-radius: 20px;
+    text-align: center;
+}
+i{
+    color: white;
+    font-size: 125px;
+    width: 100%;
+}
+.hidden{
+ color:  #323232;
+}
+header{
+    background-color: rgb(60, 60, 136);
+    text-align: center;
+    font-size: 35px;
+    color: white;
+}
+.selected{
+    color: white;
+    background-color: blue;
+    transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+}
+.match{
+    background-color: green;
+}
+.notMatch{
+    background-color: red;
+}
+.evenRemover{
+    pointer-events: none;
+    cursor: progress;
+}
+ 
+
