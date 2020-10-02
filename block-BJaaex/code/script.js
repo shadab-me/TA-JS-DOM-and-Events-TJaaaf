@@ -40,13 +40,16 @@ function handler(event) {
         counter++
         el.classList.remove('hidden');
         event.target.classList.add('selected');
+        event.target.classList.add('evenRemover');
+
     }
     if (event.target.hasAttribute('data-in')) {
         m = m+1
         let el = event.target;
         Value.push(el.dataset.in);
         el.classList.remove('hidden')
-        el.parentElement.classList.add('selected')
+        el.parentElement.classList.add('selected');
+        el.classList.add('evenRemover');
         counter++
     }
 
@@ -67,9 +70,9 @@ function con(count){
 
       if(Value[0] == Value[1]){
           [...Selected].forEach(item => {
-              item.classList.add('match');
-              item.classList.remove('selected');
-              item.classList.add('evenRemover');
+            console.log(item.classList.add('evenRemover'));
+            item.classList.add('match');
+            item.classList.remove('selected');
             });
           [...hidden].forEach((item) => {
             item.classList.remove('evenRemover');
@@ -83,7 +86,7 @@ function con(count){
                 item.classList.remove('selected');
                 item.childNodes[0].classList.add('hidden');
             });
-        }, 2000);
+        }, 1000);
 
         [...hidden].forEach((item) => {
             item.classList.remove('evenRemover');
