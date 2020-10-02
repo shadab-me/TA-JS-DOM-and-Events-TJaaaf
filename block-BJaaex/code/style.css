@@ -25,6 +25,12 @@ header{
     text-align: center;
     font-size: 35px;
     color: white;
+    display:flex;
+    justify-content: center;
+    padding: 10px;
+}
+.move{
+    margin-right: 50px;
 }
 .selected{
     color: white;
