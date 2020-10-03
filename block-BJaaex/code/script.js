@@ -4,18 +4,15 @@ let t = document.querySelector('#time');
 let body = document.querySelector('body')
 let m = 0;
 let timer = 0;
- 
+let counter = 0;
+let Value = [];
 
 let characters = [1, 2, 3, 4, 5, 6, 7, 8];
-
 function random(char) {
     let data = characters.concat(characters);
     data.sort(() => Math.random() - 0.5);
     return data;
 }
-let counter = 0;
-let Value = [];
-
 
 
 function createUi(data) {
@@ -37,7 +34,7 @@ createUi(random());
 
 function handler(event) {
 
-    if(event.target.id == "hide") {
+    if (event.target.id == "hide") {
         m = m + 1
         let el = event.target.childNodes[0];
         Value.push(el.dataset.in);
@@ -60,7 +57,7 @@ function handler(event) {
     compare(counter, event);
     move.innerText = m;
     completed();
- 
+
 }
 
 function compare(count) {
@@ -83,8 +80,8 @@ function compare(count) {
         } else if (Value[0] != Value[1]) {
             [...Selected].forEach(item => {
                 item.classList.add('notMatch');
-             });
-             setTimeout(function () {
+            });
+            setTimeout(function () {
                 [...Selected].forEach(item => {
                     item.classList.remove('notMatch');
                     item.classList.remove('selected');
@@ -99,10 +96,10 @@ function compare(count) {
 
         Value = [];
         counter = 0;
-     }
+    }
     allBoxes.forEach((item) => {
-        if(item.classList.contains('match')){
-           item.classList.add('evenRemover');
+        if (item.classList.contains('match')) {
+            item.classList.add('evenRemover');
         }
     });
 }
@@ -118,7 +115,8 @@ function time() {
         document.querySelector("#sec").innerText = `${finalSecond}`;
     }, 1000);
 };
-function reset(){
+
+function reset() {
     let win = document.querySelector('.win');
     win.style.display = 'none';
     move.innerHTML = 0
@@ -131,7 +129,8 @@ function reset(){
     });
     contain.addEventListener('click', handler);
 }
-function createModeUi(){
+
+function createModeUi() {
     body.style.backgroundColor = 'rgba(0, 0, 0, 0.6);'
     let section = document.createElement('section');
     section.setAttribute('class', 'win');
@@ -156,10 +155,10 @@ function createModeUi(){
 contain.addEventListener('click', handler);
 
 let allBoxes = [...document.querySelectorAll('.box')];
-function completed(){
-        if(allBoxes.every((item) => item.classList.contains("match"))){
-           createModeUi();
-           contain.removeEventListener('click', handler);
- } 
-}
- 
+
+function completed() {
+    if (allBoxes.every((item) => item.classList.contains("match"))) {
+        createModeUi();
+        contain.removeEventListener('click', handler);
+    }
+};
