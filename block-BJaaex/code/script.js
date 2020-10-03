@@ -1,10 +1,10 @@
 let contain = document.querySelector('.container');
 let move = document.querySelector('#move');
 let t = document.querySelector('#time');
-
+let body = document.querySelector('body')
 let m = 0;
 let timer = 0;
-
+ 
 
 let characters = [1, 2, 3, 4, 5, 6, 7, 8];
 
@@ -13,7 +13,6 @@ function random(char) {
     data.sort(() => Math.random() - 0.5);
     return data;
 }
-console.log(random())
 let counter = 0;
 let Value = [];
 
@@ -30,12 +29,15 @@ function createUi(data) {
         i.setAttribute('class', 'hidden')
         box.appendChild(i);
         contain.appendChild(box)
-
     });
- }
+}
+
+createUi(random());
+
 
 function handler(event) {
-    if (event.target.id == "hide") {
+
+    if(event.target.id == "hide") {
         m = m + 1
         let el = event.target.childNodes[0];
         Value.push(el.dataset.in);
@@ -57,6 +59,8 @@ function handler(event) {
 
     compare(counter, event);
     move.innerText = m;
+    completed();
+ 
 }
 
 function compare(count) {
@@ -77,8 +81,10 @@ function compare(count) {
             });
 
         } else if (Value[0] != Value[1]) {
-            [...Selected].forEach(item => item.classList.add('notMatch'));
-            setTimeout(function () {
+            [...Selected].forEach(item => {
+                item.classList.add('notMatch');
+             });
+             setTimeout(function () {
                 [...Selected].forEach(item => {
                     item.classList.remove('notMatch');
                     item.classList.remove('selected');
@@ -93,7 +99,12 @@ function compare(count) {
 
         Value = [];
         counter = 0;
-    }
+     }
+    allBoxes.forEach((item) => {
+        if(item.classList.contains('match')){
+           item.classList.add('evenRemover');
+        }
+    });
 }
 
 function time() {
@@ -107,6 +118,48 @@ function time() {
         document.querySelector("#sec").innerText = `${finalSecond}`;
     }, 1000);
 };
+function reset(){
+    let win = document.querySelector('.win');
+    win.style.display = 'none';
+    move.innerHTML = 0
+    m = 0;
+    Value = [];
+    allBoxes.forEach((item) => {
+        item.classList.remove('match');
+        item.classList.remove('evenRemover');
+        item.childNodes[0].classList.add('hidden');
+    });
+    contain.addEventListener('click', handler);
+}
+function createModeUi(){
+    body.style.backgroundColor = 'rgba(0, 0, 0, 0.6);'
+    let section = document.createElement('section');
+    section.setAttribute('class', 'win');
+    let i = document.createElement('i');
+    i.innerHTML = ' <h1>You Won😍</h1>'
+    let detail = document.createElement('div');
+    detail.setAttribute('class', 'detail');
+    let move = document.createElement('span');
+    move.innerHTML = `<h2>Move👆 ${m}`;
+    let t = document.createElement('span');
+    t.innerHTML = `<h2>Time⏲ : 00`;
+    let playAgain = document.createElement('i');
+    playAgain.setAttribute('class', 'playAgain')
+    playAgain.innerHTML = `Play Again 🖐 Click Here`;
+    playAgain.addEventListener('click', reset)
+    detail.append(move, t);
+    section.append(i, detail, playAgain);
+    contain.append(section);
+
+}
 
 contain.addEventListener('click', handler);
- createUi(random());
+
+let allBoxes = [...document.querySelectorAll('.box')];
+function completed(){
+        if(allBoxes.every((item) => item.classList.contains("match"))){
+           createModeUi();
+           contain.removeEventListener('click', handler);
+ } 
+}
+ 
