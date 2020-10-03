@@ -82,6 +82,8 @@ header{
     background-color: white;
     border-radius: 45px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, .5);
+    max-width: 720px;
+
 } 
 .win i{
     font-size: 44px;
@@ -91,11 +93,12 @@ header{
 }
 .win span{
     margin: 35px;
-
+  
 }
 .playAgain{
     cursor: pointer;
-}
+    margin-left: 66px;
+ }
 .detail{
 
     display: flex;
