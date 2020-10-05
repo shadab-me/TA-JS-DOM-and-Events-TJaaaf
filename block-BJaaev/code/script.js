@@ -2,8 +2,7 @@ let userInput = document.querySelector('#userInput');
 let ul = document.querySelector('.list-group');
 
 
-let allTodo = [];
-
+let allTodo = JSON.parse(localStorage.getItem('todos')) || [];
 function handler(event){
 let value = event.target.value;
    if(event.keyCode === 13 && value !== ""){
@@ -15,19 +14,21 @@ let value = event.target.value;
     event.target.value = ""
     ui();
 }
+
+localStorage.setItem('todos', JSON.stringify(allTodo))
+
 }
 function deleteHandler(event){
     let ind = event.target.dataset.index;
     console.log(ind)
     allTodo.splice(ind, 1);
-    
+    localStorage.setItem('todos', JSON.stringify(allTodo))
     ui();
 }
 function handlerDone(event){
     let id = event.target.dataset.id;
     allTodo[id].isDone = !allTodo[id].isDone;
     ui();
-
  }
 function FilterHandler(event){
  if(event.target.id == 'All'){
@@ -39,6 +40,13 @@ if(event.target.id == 'Active'){
 if(event.target.id == 'Completed'){
     ui(allTodo.filter(task => task.isDone == true));
 }
+if(event.target.id == 'ClearCompleted'){
+    allTodo =  allTodo.filter((todo) => todo.isDone == false);
+    console.log(allTodo)
+    ui(allTodo);
+    localStorage.setItem('todos', JSON.stringify(allTodo));
+  
+}
  }
 
 
@@ -48,8 +56,10 @@ if(event.target.id == 'Completed'){
        el.forEach((item, index) => {
         let li = document.createElement('li');
         li.setAttribute('class', 'list-group-item d-flex justify-content-between align-items-center')
+        li.style.border = 'none'
         var input = document.createElement("INPUT");
         input.setAttribute("type", "checkbox");
+        input.setAttribute('id', 'circle')
         input.checked = item.isDone;
         input.setAttribute('data-id', index);
         input.addEventListener('input', handlerDone);
@@ -63,13 +73,15 @@ if(event.target.id == 'Completed'){
         li.append(input, p, span);
         ul.appendChild(li);
     });
-    let footer = document.createElement('li');
+        let footer = document.createElement('li');
         footer.setAttribute('class', 'list-group-item d-flex justify-content-between align-items-center')
+        footer.setAttribute('id', 'footer')
         footer.innerHTML = `<span id ='All'>All</span> 
         <span id = 'Active'>Active</span> 
-        <span id = 'Completed'>Completed</span>`
-         ul.appendChild(footer);
+        <span id = 'Completed'>Completed</span>
+        <span id = 'ClearCompleted'>Clear Completed</span>`
+        ul.appendChild(footer);
         footer.addEventListener('click', FilterHandler);
   }
- userInput.addEventListener("keyup", handler);
- 
+       userInput.addEventListener("keyup", handler);
+ui();
