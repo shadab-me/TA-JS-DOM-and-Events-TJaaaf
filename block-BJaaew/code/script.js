@@ -1,14 +1,15 @@
 let container = document.querySelector(".containerS");
 let ul = document.querySelector('ul');
 let all = document.querySelector('#all');
+let search = document.querySelector('#search');
+
+
 
 function filterHandler(event){
-
    let value = event.target.dataset.filter;
     let filterAr =  got.houses.filter((item) => item.name == value);
     console.log(filterAr)
     displayFilter(filterAr);
-    
 }
 function displayFilter(data = got.houses){
     container.innerHTML = ''
@@ -19,7 +20,7 @@ function displayFilter(data = got.houses){
     let name = document.createElement("h2");
     let details = document.createElement("p");
     let button = document.createElement("a");
-     button.href = e.wikiLink;
+    button.href = e.wikiLink;
     img.src = e.image;
     name.innerText = e.name;
     details.innerText = e.description;
@@ -35,8 +36,7 @@ function displayFilter(data = got.houses){
 }))};
 
 function FilterByHouse(){
-
-    got.houses.forEach((item) => {  
+     got.houses.forEach((item) => {  
      let li = document.createElement('li');
      let a = document.createElement('a');
      a.href = '#';
@@ -47,5 +47,19 @@ function FilterByHouse(){
      ul.append(li);
     });
     }
+
+
+    let allPeople = got.houses.map(house => house.people).flat().filter((item) => item.name.includes('s'));
+    
+    console.log([...allPeople]);
+
+    function InputSearch(e){
+        let allPeople = got.houses.map(house => house.people).flat().filter((item) => item.name.toLowerCase().includes(e.target.value.toLowerCase().trim()));
+         let p = [{people: allPeople}];
+         console.log(p);
+          displayFilter(p);         
+     }
+
 FilterByHouse();
 displayFilter();
+search.addEventListener('keyup', InputSearch)
