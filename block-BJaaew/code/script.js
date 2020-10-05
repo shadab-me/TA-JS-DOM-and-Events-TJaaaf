@@ -7,10 +7,11 @@ let search = document.querySelector('#search');
 
 function filterHandler(event){
    let value = event.target.dataset.filter;
+   event.target.classList.add('active')
     let filterAr =  got.houses.filter((item) => item.name == value);
     console.log(filterAr)
     displayFilter(filterAr);
-}
+ }
 function displayFilter(data = got.houses){
     container.innerHTML = ''
     data.map(e => e.people.forEach(e => {
@@ -40,7 +41,8 @@ function FilterByHouse(){
      let li = document.createElement('li');
      let a = document.createElement('a');
      a.href = '#';
-     a.innerText = item.name;
+     a.setAttribute('class', 'flex-sm-fill text-sm-center nav-link')
+     a.innerText = item.name.toUpperCase();
      a.setAttribute('data-filter', item.name);
      a.addEventListener('click', filterHandler);
      li.append(a)
