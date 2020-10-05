@@ -5,62 +5,81 @@ let search = document.querySelector('#search');
 
 
 
-function filterHandler(event){
-   let value = event.target.dataset.filter;
-   event.target.classList.add('active')
-    let filterAr =  got.houses.filter((item) => item.name == value);
-    console.log(filterAr)
+function filterHandler(event) {
+    let value = event.target.dataset.filter;
+    console.log(value);
+    if(value == 'All'){
+        displayFilter(got.houses);
+        console.log(got.houses);
+
+    }else{
+
+    let filterAr = got.houses.filter((item) => item.name == value);
     displayFilter(filterAr);
- }
-function displayFilter(data = got.houses){
+}
+}
+
+function displayFilter(data = got.houses) {
     container.innerHTML = ''
     data.map(e => e.people.forEach(e => {
-    let box = document.createElement("article");
-    let flexContainer = document.createElement("div");
-    let img = document.createElement("img");
-    let name = document.createElement("h2");
-    let details = document.createElement("p");
-    let button = document.createElement("a");
-    button.href = e.wikiLink;
-    img.src = e.image;
-    name.innerText = e.name;
-    details.innerText = e.description;
-    button.innerText = "Learn More!";
-    box.classList.add("box");
-    flexContainer.classList.add("flex");
-    img.classList.add("img");
-    details.classList.add("details");
-    button.classList.add("button");
-    flexContainer.append(img, name);
-    box.append(flexContainer, details, button);
-    container.append(box);
-}))};
+        let box = document.createElement("article");
+        let flexContainer = document.createElement("div");
+        let img = document.createElement("img");
+        let name = document.createElement("h2");
+        let details = document.createElement("p");
+        let button = document.createElement("a");
+        button.href = e.wikiLink;
+        img.src = e.image;
+        name.innerText = e.name;
+        details.innerText = e.description;
+        button.innerText = "Learn More!";
+        box.classList.add("box");
+        flexContainer.classList.add("flex");
+        img.classList.add("img");
+        details.classList.add("details");
+        button.classList.add("button");
+        flexContainer.append(img, name);
+        box.append(flexContainer, details, button);
+        container.append(box);
+    }))
+};
 
-function FilterByHouse(){
-     got.houses.forEach((item) => {  
-     let li = document.createElement('li');
-     let a = document.createElement('a');
-     a.href = '#';
-     a.setAttribute('class', 'flex-sm-fill text-sm-center nav-link')
-     a.innerText = item.name.toUpperCase();
-     a.setAttribute('data-filter', item.name);
-     a.addEventListener('click', filterHandler);
-     li.append(a)
-     ul.append(li);
+function FilterByHouse() {
+    let all = document.createElement('li');
+    let allLink = document.createElement('a');
+    allLink.href = '#';
+    allLink.setAttribute('class', 'flex-sm-fill text-sm-center nav-link')
+    allLink.innerText = 'All';
+    allLink.setAttribute('data-filter', 'All');
+    allLink.addEventListener('click', filterHandler);
+    all.append(allLink)
+    ul.append(all);
+    got.houses.forEach((item) => {
+        let li = document.createElement('li');
+        let a = document.createElement('a');
+        a.setAttribute('class', 'flex-sm-fill text-sm-center nav-link')
+        a.innerText = item.name.toUpperCase();
+        a.setAttribute('data-filter', item.name);
+        a.addEventListener('click', filterHandler);
+        li.append(a)
+        ul.append(li);
     });
-    }
+
+}
 
 
-    let allPeople = got.houses.map(house => house.people).flat().filter((item) => item.name.includes('s'));
-    
-    console.log([...allPeople]);
+let allPeople = got.houses.map(house => house.people).flat().filter((item) => item.name.includes('s'));
 
-    function InputSearch(e){
-        let allPeople = got.houses.map(house => house.people).flat().filter((item) => item.name.toLowerCase().includes(e.target.value.toLowerCase().trim()));
-         let p = [{people: allPeople}];
-         console.log(p);
-          displayFilter(p);         
-     }
+console.log([...allPeople]);
+
+function InputSearch(e) {
+    let allPeople = got.houses.map(house => house.people).flat().filter((item) => item.name.toLowerCase().includes(e.target.value.toLowerCase().trim()));
+    let p = [{
+        people: allPeople
+    }];
+    console.log(p);
+    displayFilter(p);
+}
 
 FilterByHouse();
 displayFilter();
