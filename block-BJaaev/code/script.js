@@ -14,7 +14,9 @@ let value = event.target.value;
     event.target.value = ""
     ui();
 }
+
 localStorage.setItem('todos', JSON.stringify(allTodo))
+
 }
 function deleteHandler(event){
     let ind = event.target.dataset.index;
@@ -37,6 +39,13 @@ if(event.target.id == 'Active'){
 }
 if(event.target.id == 'Completed'){
     ui(allTodo.filter(task => task.isDone == true));
+}
+if(event.target.id == 'ClearCompleted'){
+    allTodo =  allTodo.filter((todo) => todo.isDone == false);
+    console.log(allTodo)
+    ui(allTodo);
+    localStorage.setItem('todos', JSON.stringify(allTodo));
+  
 }
  }
 
@@ -66,9 +75,11 @@ if(event.target.id == 'Completed'){
     });
         let footer = document.createElement('li');
         footer.setAttribute('class', 'list-group-item d-flex justify-content-between align-items-center')
+        footer.setAttribute('id', 'footer')
         footer.innerHTML = `<span id ='All'>All</span> 
         <span id = 'Active'>Active</span> 
-        <span id = 'Completed'>Completed</span>`
+        <span id = 'Completed'>Completed</span>
+        <span id = 'ClearCompleted'>Clear Completed</span>`
         ul.appendChild(footer);
         footer.addEventListener('click', FilterHandler);
   }
